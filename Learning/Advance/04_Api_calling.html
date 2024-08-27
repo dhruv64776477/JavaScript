@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GitHub Followers</title>
+  </head>
+  <body>
+    <h1>GitHub Followers</h1>
+    <p id="image"></p>
+    <p id="followers">Loading...</p>
+
+    <script>
+      // Create a new XMLHttpRequest object
+      let xhr = new XMLHttpRequest();
+      const apiUrl = "https://api.github.com/users/hiteshchoudhary";
+
+      // Configure it: GET-request for the URL
+      xhr.open("GET", apiUrl, true);
+
+      // Set the onload function
+      xhr.onload = function () {
+        if (xhr.status === 200) {
+          const data = JSON.parse(xhr.responseText); // Parse JSON
+          const followers = data.followers; // Get followers count
+          const name = data.name;
+          const avatarUrl = data.avatar_url; // Get the avatar URL
+          document.getElementById(
+            "followers"
+          ).textContent = `Followers: ${followers}`;
+          document.getElementById(
+            "image"
+          ).innerHTML = `<img src="${avatarUrl}" alt="${name}'s Avatar" />`;
+        } else {
+          document.getElementById("followers").textContent =
+            "Failed to load followers.";
+          document.getElementById("image").textContent = "Failed to load.";
+        }
+      };
+
+      // Handle errors
+      xhr.onerror = function () {
+        console.error("Request failed");
+        document.getElementById("followers").textContent =
+          "Failed to load followers.";
+        document.getElementById("image").textContent = "Failed to load.";
+      };
+
+      // Api Request
+      const requestUrl = "https://api.github.com/users/hiteshchoudhary";
+      xhr = new XMLHttpRequest();
+      xhr.open("GET", requestUrl);
+      xhr.onreadystatechange = function () {
+        console.log(xhr.readyState);
+        if (xhr.readyState === 4) {
+          const data = JSON.parse(this.responseText);
+          console.log(typeof data);
+          console.log(data);
+        }
+      };
+      console.log(xhr);
+
+      // Send the request
+      xhr.send();
+    </script>
+  </body>
+</html>

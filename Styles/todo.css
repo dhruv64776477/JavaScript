@@ -1,0 +1,30 @@
+body {
+  font-family: Arial;
+}
+.css-div,
+.css-di {
+  display: grid;
+  grid-template-columns: 200px 150px 100px;
+  column-gap: 10px;
+  row-gap: 10px;
+}
+.css-di {
+  margin-bottom: 10px;
+}
+.name,
+.date {
+  font-size: 12px;
+  padding: 10px;
+}
+.button {
+  border: none;
+  background-color: black;
+  color: white;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+  font-weight: bold;
+  border-radius: 20px;
+  cursor: pointer;
+}

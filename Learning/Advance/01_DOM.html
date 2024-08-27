@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Interactive Webpage</title>
+    <style>
+      #colorBox {
+        width: 200px;
+        height: 200px;
+        background-color: lightgray;
+        margin-bottom: 20px;
+      }
+      .highlight {
+        border: 2px solid red;
+      }
+      .box {
+        height: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="colorBox" class="box"></div>
+    <button id="colorButton">Change Color</button>
+    <button id="addParagraphButton">Add Paragraph</button>
+    <button id="toggleHighlightButton">Toggle Highlight</button>
+    <div id="paragraphContainer"></div>
+    <img
+      id="image"
+      class="box"
+      src="../images/Paper-emoji.jpg"
+      alt="Placeholder Image"
+    />
+    <p class="description">This is a sample paragraph.</p>
+    <p class="description">Another paragraph.</p>
+
+    <!--************************************************************************************************************************************************************************************ -->
+
+    <script>
+      // 1. document.getElementById()
+      const colorBox = document.getElementById("colorBox");
+      const colorButton = document.getElementById("colorButton");
+      const addParagraphButton = document.getElementById("addParagraphButton");
+      const toggleHighlightButton = document.getElementById(
+        "toggleHighlightButton"
+      );
+      const paragraphContainer = document.getElementById("paragraphContainer");
+      const image = document.getElementById("image");
+
+      // 2. document.querySelector()
+      const firstParagraph = document.querySelector(".description");
+
+      // 3. document.querySelectorAll()
+      const allParagraphs = document.querySelectorAll(".description");
+
+      // 4. element.innerHTML
+      colorBox.innerHTML = "<p>Initial content in colorBox</p>";
+
+      // 5. element.textContent
+      firstParagraph.textContent = "Updated text for the first paragraph";
+
+      // 6. element.style
+      colorButton.addEventListener("click", () => {
+        colorBox.style.backgroundColor = getRandomColor();
+      });
+
+      // 7. element.setAttribute() and 8. element.getAttribute()
+      image.setAttribute("src", "../images/Paper-emoji.jpg");
+      console.log("Image source:", image.getAttribute("src"));
+
+      // 9. element.addEventListener()
+      addParagraphButton.addEventListener("click", () => {
+        // 10. document.createElement()
+        const newParagraph = document.createElement("p");
+        newParagraph.textContent = "This is a new paragraph!";
+
+        // 11. element.appendChild()
+        paragraphContainer.appendChild(newParagraph);
+      });
+
+      // 12. element.remove()
+      toggleHighlightButton.addEventListener("click", () => {
+        // 13. element.classList.add() and 14. element.classList.remove()
+        if (colorBox.classList.contains("highlight")) {
+          colorBox.classList.remove("highlight");
+        } else {
+          colorBox.classList.add("highlight");
+        }
+      });
+
+      // Utility function to generate a random color
+      function getRandomColor() {
+        const letters = "0123456789ABCDEF";
+        let color = "#";
+        for (let i = 0; i < 6; i++) {
+          color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+      }
+    </script>
+  </body>
+</html>

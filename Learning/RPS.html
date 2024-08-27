@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rock Paper Scissor</title>
+    <link rel="stylesheet" href="./Styles/RSP.css" />
+  </head>
+  <body>
+    <center>
+      <h1>Rock Paper Scissor</h1>
+      <button
+        onclick="
+      playGame('Rock');
+    "
+        class="button"
+      >
+        <img src="../images/rock-emoji.jpg" class="move" />
+      </button>
+
+      <button
+        onclick="
+      playGame('Paper');
+    "
+        class="button"
+      >
+        <img src="../images/Paper-emoji.jpg" class="move" />
+      </button>
+
+      <button
+        onclick="
+      playGame('Scissor');
+    "
+        class="button"
+      >
+        <img src="../images/Scissor-emoji.jpg" class="move" />
+      </button>
+
+      <h4 class="js-move"></h4>
+
+      <h2 class="js-result"></h2>
+
+      <h3 class="js-score"></h3>
+
+      <button
+        onclick="
+      score.wins= 0;
+      score.losses= 0;
+      score.ties= 0;
+      localStorage.removeItem('score');
+      updateElem();
+    "
+        class="reset"
+      >
+        Reset Score
+      </button>
+    </center>
+    <script src="../Script/RSP.js"></script>
+  </body>
+</html>

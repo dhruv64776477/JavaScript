@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Event Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        #box {
+            width: 150px;
+            height: 150px;
+            background-color: lightblue;
+            margin: 20px auto;
+            display: inline-block;
+            border: 2px solid #000;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 16px;
+        }
+        input, textarea {
+            display: block;
+            margin: 10px auto;
+            padding: 10px;
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Interactive Event Demo</h1>
+    
+    <div id="box" draggable="true"></div>
+    
+    <button id="showMessage">Show Message</button>
+    <input type="text" id="textInput" placeholder="Type something...">
+    <textarea id="textArea" placeholder="Type more text..."></textarea>
+    
+    <script>// Mouse Events
+      const box = document.getElementById('box');
+      
+      box.addEventListener('click', () => {
+          console.log('Box clicked!');
+      });
+      
+      box.addEventListener('dblclick', () => {
+          console.log('Box double-clicked!');
+      });
+      
+      box.addEventListener('mouseover', () => {
+          box.style.backgroundColor = 'lightcoral';
+          console.log('Mouse over box!');
+      });
+      
+      box.addEventListener('mouseout', () => {
+          box.style.backgroundColor = 'lightblue';
+          console.log('Mouse out of box!');
+      });
+      
+      box.addEventListener('dragstart', () => {
+          console.log('Drag started on box!');
+      });
+      
+      box.addEventListener('dragend', () => {
+          console.log('Drag ended on box!');
+      });
+      
+      // Keyboard Events
+      const textInput = document.getElementById('textInput');
+      const textArea = document.getElementById('textArea');
+      
+      textInput.addEventListener('keydown', (event) => {
+          console.log(`Key pressed in text input: ${event.key}`);
+      });
+      
+      textArea.addEventListener('keyup', (event) => {
+          console.log(`Key released in text area: ${event.key}`);
+      });
+      
+      // Form Events
+      const showMessageButton = document.getElementById('showMessage');
+      
+      showMessageButton.addEventListener('click', () => {
+          alert('Button clicked!');
+      });
+      
+      // Window Events
+      window.addEventListener('resize', () => {
+          console.log('Window resized!');
+      });
+      
+      window.addEventListener('scroll', () => {
+          console.log('Page scrolled!');
+      });
+      </script>
+</body>
+</html>
